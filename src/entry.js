@@ -1,14 +1,6 @@
-/**
- * entry.js
- * 
- * This is the first file loaded. It sets up the Renderer, 
- * Scene and Camera. It also starts the render loop and 
- * handles window resizes.
- * 
- */
-
-import { WebGLRenderer, PerspectiveCamera, Scene, Vector3 } from 'three';
+import {WebGLRenderer, PerspectiveCamera, Scene, Vector3, MOUSE} from 'three';
 import SeedScene from './objects/Scene.js';
+import { createControls } from './controls.js';
 
 const scene = new Scene();
 const camera = new PerspectiveCamera();
@@ -26,8 +18,12 @@ camera.lookAt(new Vector3(0,0,0));
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setClearColor(0x7ec0ee, 1);
 
+// controls
+const controls = createControls(camera, renderer);
+
 // render loop
 const onAnimationFrameHandler = (timeStamp) => {
+  controls.update(); // required if controls.enableDamping or controls.autoRotate are set to true
   renderer.render(scene, camera);
   seedScene.update && seedScene.update(timeStamp);
   window.requestAnimationFrame(onAnimationFrameHandler);
@@ -35,7 +31,7 @@ const onAnimationFrameHandler = (timeStamp) => {
 window.requestAnimationFrame(onAnimationFrameHandler);
 
 // resize
-const windowResizeHanlder = () => { 
+const windowResizeHanlder = () => {
   const { innerHeight, innerWidth } = window;
   renderer.setSize(innerWidth, innerHeight);
   camera.aspect = innerWidth / innerHeight;
