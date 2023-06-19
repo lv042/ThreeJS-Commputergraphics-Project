@@ -1,10 +1,14 @@
-import {WebGLRenderer, PerspectiveCamera, Scene, Vector3, MOUSE} from 'three';
+import {WebGLRenderer, PerspectiveCamera, Scene, Vector3, MOUSE, Fog, PCFSoftShadowMap} from 'three';
 import SeedScene from './objects/Scene.js';
 import { createControls } from './controls.js';
 
 const scene = new Scene();
+scene.backgroundBlurriness = 0.5;
+scene.fog = new Fog( 0xcccccc, 10, 15 );
+
 const camera = new PerspectiveCamera();
 const renderer = new WebGLRenderer({antialias: true});
+renderer.shadowMap.enabled = false;
 const seedScene = new SeedScene();
 
 // scene
@@ -17,6 +21,8 @@ camera.lookAt(new Vector3(0,0,0));
 // renderer
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setClearColor(0x7ec0ee, 1);
+renderer.shadowMap.type = PCFSoftShadowMap;
+
 
 // controls
 const controls = createControls(camera, renderer);
