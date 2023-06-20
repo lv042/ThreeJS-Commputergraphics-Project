@@ -11,6 +11,7 @@ import {
 } from 'three';
 import Land from './Land/Land.js';
 import Miles from './Miles/Miles.js';
+import Plane from './Plane/Plane.js';
 import BasicLights from './Lights.js';
 
 export default class SeedScene extends Group {
@@ -31,12 +32,15 @@ export default class SeedScene extends Group {
 
     const sun = this.createSun();
     const zeppelin = this.createZeppelin();
+    const plane = new Plane();
+    plane.position.set(0, 10, 0);
 
     this.add(sun);
     this.add(zeppelin);
     this.add(land);
     this.add(miles);
     this.add(lights);
+    this.add(plane);
   }
 
   createSun() {

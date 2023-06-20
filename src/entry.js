@@ -5,7 +5,7 @@ import { createControls } from './controls.js';
 // Create the scene
 const scene = new Scene();
 scene.backgroundBlurriness = 0.5;
-scene.fog = new Fog(0xcccccc, 25, 25); // Fog for the requirements
+scene.fog = new Fog(0xcccccc, 30, 35); // Fog for the requirements
 
 // Create the camera
 const camera = new PerspectiveCamera();
