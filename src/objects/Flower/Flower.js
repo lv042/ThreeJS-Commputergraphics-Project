@@ -1,36 +1,32 @@
-import { Group, TextureLoader, AnimationMixer, Clock } from 'three';
+import {Clock, Group, AnimationMixer } from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import MODEL from './Gangnam Style.fbx';
-import TEXTURE from './ThanosTextur.png';
 
 export default class Flower extends Group {
   constructor() {
     super();
 
     this.name = 'flower';
+    const loader = new FBXLoader();
+    let mixer;
 
-    const fbxLoader = new FBXLoader();
-    const textureLoader = new TextureLoader();
-    this.mixer = null; // Animation mixer
-    this.clock = new Clock(); // Clock for managing animation time
-
-    // Load texture
-    const texture = textureLoader.load(TEXTURE);
-
-    // Load model
-    fbxLoader.load(MODEL, (model) => {
-      model.scale.set(0.001, 0.001, 0.001); // Adjust scale as per your need
-      model.animations; // Save animations
-
-
-      this.add(model);
+    loader.load(MODEL, (object) => {
+      object.scale.set(0.001, 0.001, 0.001);  // Depending on the model size, you may need to adjust these values
+      mixer = new AnimationMixer(object);
+      const animationAction = mixer.clipAction(object.animations[0]);
+      animationAction.play();
+      this.add(object);
     });
-  }
 
-  update(deltaTime) {
-    // If there's an animation mixer, update it with the time delta
-    if(this.mixer) {
-      this.mixer.update(this.clock.getDelta());
+    // You need an animation loop to update the mixer in your main code:
+    const clock = new Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if (mixer) mixer.update(clock.getDelta());
+
     }
+
+    animate();
   }
 }

@@ -6,12 +6,17 @@ export default class BasicLights extends Group {
 
     const ambientLight = new AmbientLight(0xffffff, 0.9);
     const spotLight = new SpotLight(0xffffff, 0.5);
-    spotLight.position.set(3, 10, 3);
-    spotLight.angle = Math.PI / 40;
+    spotLight.position.set(0, 5, 0);
+    spotLight.shadow.mapSize.width = 1024;
+    spotLight.shadow.mapSize.height = 1024;
     spotLight.castShadow = true;
-    spotLight.penumbra = 0.1;
-    spotLight.intensity = 2;
-    spotLight.target.position.set(0, 0, 0);
+    spotLight.shadow.camera.near = 500;
+    spotLight.shadow.camera.far = 4000;
+    spotLight.shadow.camera.fov = 30;
+    spotLight.shadow.bias = 0.0001;
+    spotLight.penumbra = 0.5;
+    spotLight.intensity = 5;
+
 
     this.add(ambientLight, spotLight);
   }

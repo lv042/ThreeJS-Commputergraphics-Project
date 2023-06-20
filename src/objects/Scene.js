@@ -11,13 +11,13 @@ export default class SeedScene extends Group {
     const flower = new Flower();
     const lights = new BasicLights();
 
-    flower.position.set(0, 0, 0);
-    land.position.set(0, 0, 0);
-    lights.position.set(0, 0, 0);
+    flower.position.set(3, 0, 3);
+
 
     flower.castShadow = true;
     flower.receiveShadow = true;
     flower.rotation.y = Math.PI / 2;
+    lights.target = flower;
 
 
     this.name = 'scene';

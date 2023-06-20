@@ -4,7 +4,7 @@ import { createControls } from './controls.js';
 
 const scene = new Scene();
 scene.backgroundBlurriness = 0.5;
-scene.fog = new Fog( 0xcccccc, 10, 15 );
+scene.fog = new Fog( 0xcccccc, 25, 25 );
 
 const camera = new PerspectiveCamera();
 const renderer = new WebGLRenderer({antialias: true});
@@ -20,7 +20,7 @@ camera.lookAt(new Vector3(0,0,0));
 
 // renderer
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setClearColor(0x7ec0ee, 1);
+renderer.setClearColor(0x000000, 1);
 renderer.shadowMap.type = PCFSoftShadowMap;
 
 
