@@ -11,7 +11,7 @@ export default class Miles extends Group {
     let mixer;
 
     loader.load(MODEL, (object) => {
-      object.scale.set(0.001, 0.001, 0.001);  // Depending on the model size, you may need to adjust these values
+      object.scale.set(0.0015, 0.0015, 0.0015);  // Depending on the model size, you may need to adjust these values
       mixer = new AnimationMixer(object);
       const animationAction = mixer.clipAction(object.animations[0]);
       animationAction.play();
