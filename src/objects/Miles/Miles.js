@@ -2,11 +2,11 @@ import {Clock, Group, AnimationMixer } from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import MODEL from './Gangnam Style.fbx';
 
-export default class Flower extends Group {
+export default class Miles extends Group {
   constructor() {
     super();
 
-    this.name = 'flower';
+    this.name = 'Miles';
     const loader = new FBXLoader();
     let mixer;
 

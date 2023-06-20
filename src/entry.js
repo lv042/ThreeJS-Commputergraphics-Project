@@ -4,7 +4,7 @@ import { createControls } from './controls.js';
 
 const scene = new Scene();
 scene.backgroundBlurriness = 0.5;
-scene.fog = new Fog( 0xcccccc, 25, 25 );
+scene.fog = new Fog( 0xcccccc, 25, 25 ); //fog for the requirements
 
 const camera = new PerspectiveCamera();
 const renderer = new WebGLRenderer({antialias: true});
@@ -29,7 +29,7 @@ const controls = createControls(camera, renderer);
 
 // render loop
 const onAnimationFrameHandler = (timeStamp) => {
-  controls.update(); // required if controls.enableDamping or controls.autoRotate are set to true
+  controls.update();
   renderer.render(scene, camera);
   seedScene.update && seedScene.update(timeStamp);
   window.requestAnimationFrame(onAnimationFrameHandler);

@@ -1,6 +1,6 @@
 import {Group, SphereGeometry, MeshBasicMaterial, Mesh, PointLight, TextureLoader} from 'three';
 import Land from './Land/Land.js';
-import Flower from './Flower/Flower.js';
+import Miles from './Miles/Miles.js';
 import BasicLights from './Lights.js';
 
 export default class SeedScene extends Group {
@@ -8,16 +8,16 @@ export default class SeedScene extends Group {
     super();
 
     const land = new Land();
-    const flower = new Flower();
+    const miles = new Miles();
     const lights = new BasicLights();
 
-    flower.position.set(3, 0, 3);
+    miles.position.set(3, 0, 3);
 
 
-    flower.castShadow = true;
-    flower.receiveShadow = true;
-    flower.rotation.y = Math.PI / 2;
-    lights.target = flower;
+    miles.castShadow = true;
+    miles.receiveShadow = true;
+    miles.rotation.y = Math.PI / 2;
+    lights.target = miles;
 
     const geometry = new SphereGeometry(1, 32, 32);
     const material = new MeshBasicMaterial({ color: 0xEB763C }); // yellow color
@@ -37,11 +37,10 @@ export default class SeedScene extends Group {
 
     this.name = 'scene';
 
-    this.add(land, flower, lights);
+    this.add(land, miles, lights);
   }
 
   update(timeStamp) {
-
    // this.rotation.y = timeStamp / 10000;
   }
 }
