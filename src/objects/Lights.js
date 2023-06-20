@@ -5,7 +5,7 @@ export default class BasicLights extends Group {
     super(...args);
 
     const ambientLight = new AmbientLight(0xffffff, 0.9);
-    const spotLight = new SpotLight(0xffffff, 0.5);
+    const spotLight = new SpotLight(0xEB763C, 0.5);
     spotLight.position.set(0, 5, 0);
     spotLight.shadow.mapSize.width = 1024;
     spotLight.shadow.mapSize.height = 1024;

@@ -4,8 +4,8 @@ export function createControls(camera, renderer) {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.autoRotate = true;
-  controls.minDistance = 7;
-  controls.maxDistance = 25;
+  controls.minDistance = 20;
+  controls.maxDistance = 30;
 
   // Remove default OrbitControls event listeners
 
