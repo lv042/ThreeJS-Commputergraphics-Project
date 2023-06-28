@@ -34,9 +34,13 @@ export default class SeedScene extends Group {
     const zeppelin = this.createZeppelin();
     const plane = new Plane();
     plane.position.set(0, 10, 0);
+    const zeppelin2 = this.createZeppelin();
+    zeppelin2.rotation.y = Math.PI /2;
+    zeppelin2.position.set(0, 5, -5);
 
     this.add(sun);
     this.add(zeppelin);
+    this.add(zeppelin2);
     this.add(land);
     this.add(miles);
     this.add(lights);
